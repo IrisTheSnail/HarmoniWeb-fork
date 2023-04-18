@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark d-flex flex-row px-5">
+  <div class="text-light bg-dark">Logo</div>
+</nav>
+<!--navbar hh-->
+<div class="container d-flex flex-column justify-content-center align-items-center m-5">
+  <div class="row m-3" style="font-size:xx-large;">Create a new account!</div>
+<form #register="ngForm" (ngSubmit)="registerFunc(register)" ngForm>
+    <div class="form-group">
+      <label for="username"></label><br>
+      <input type="text" name="username" class="form-control" placeholder="" ngModel>
+      <small class="text-muted">Username</small>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="email"></label><br>
+      <input type="text" name="email" class="form-control" placeholder="" ngModel>
+      <small class="text-muted">email</small>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="password"></label><br>
+      <input type="password" id="password" class="form-control" name="password" placeholder="" ngModel>
+      <small class="text-muted">password</small>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="reenter"></label><br>
+      <input type="password" class="form-control" name="reenter" placeholder="" ngModel>
+      <small class="text-muted">re-enter password</small>
+    </div>
+    <div *ngIf="register.value.password !== register.value.reenter" class="text-danger" >typo in password</div>
+    <pre></pre>
+    <button type="submit" class="btn btn-primary rounded-pill" style="background-color: rgb(76, 0, 163);border-color: rgb(rgb(218, 26, 218);">
+      Submit
+    </button>
+  </form>
+</div>
