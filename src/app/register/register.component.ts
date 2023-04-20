@@ -4,6 +4,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { GenericValidator } from '../../shared/generic-validator';
 import { PasswordMatcher } from '../../shared/password-matcher';
+import { User, users } from 'users';
 
 @Component({
   selector: 'app-register',
@@ -13,19 +14,14 @@ import { PasswordMatcher } from '../../shared/password-matcher';
 export class RegisterComponent {
 
   register: FormGroup;
+  user: any;
 
   constructor(private fb: FormBuilder) {
     // Define an instance of the validator for use with this form,
   }
 
   ngOnInit() {
-    this.register = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required]
-    }, { validator: PasswordMatcher.match });
+
   }
 
   registerFunc(register: any){
@@ -33,9 +29,19 @@ export class RegisterComponent {
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if(!(register.value.email.match(mailformat))){
       alert("You have entered an invalid email address!");
+      register.reset();
 
+    }else {//register it as a JSON
+      this.user = {
+        email : register.value.email,
+        password : register.value.password,
+        username : register.value.username,
+      };
+
+      users.push(this.user);
+
+      // console.log(users);
+      // console.log(users.find(element => element.username == "Iris"));
     }
-    //register is a JSON
   }
 }
-

@@ -30,8 +30,8 @@
     </div>
     <div *ngIf="register.value.password !== register.value.reenter" class="text-danger" >typo in password</div>
     <pre></pre>
-    <button type="submit" class="btn btn-primary rounded-pill" style="background-color: rgb(76, 0, 163);border-color: rgb(rgb(218, 26, 218);">
+    <a [routerLink]="['','users']" routerLinkActive="active" type="submit" class="btn btn-primary rounded-pill" style="background-color: rgb(76, 0, 163);border-color: rgb(218, 26, 218);">
       Submit
-    </button>
+    </a>
   </form>
 </div>

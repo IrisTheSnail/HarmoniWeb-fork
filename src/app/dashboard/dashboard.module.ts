@@ -6,8 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    //here goes your components for this feature (ah well ta dashboard rah feature hhhh)
-  
+    //here goes your components for this feature
     DashboardComponent
   ],
   imports: [
@@ -17,5 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 })
 
 export class DashboardModule {
+  constructor(){
 
+  }
 }
