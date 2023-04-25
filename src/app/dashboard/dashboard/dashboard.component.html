@@ -1,13 +1,17 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top"
-style="max-height: 80px;
-  background: linear-gradient(to right, #a641e1, #9682ee);">
+<div class="container" style="margin-left: 210px; ">
 
-<div class="position-fixed top-0 start-0 bottom-0 bg-dark"
-style="width: 200px">
+    <router-outlet name="skin"></router-outlet>
+  </div>
+
+
+<!--SIDEBAR-->
+
+<div class="position-fixed top-0 start-0 bottom-0 bg-dark col-sm-1"
+style="width:200px; z-index: 3; margin-right: 30px;">
   <div class="py-3">
     <a class="d-flex align-items-center px-3 mb-3" href="#">
         <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png"
-        alt="Your Logo" width="150px" class="me-2">
+        alt="Your Logo" width="90%" class="me-2">
     </a>
 
     <div class="py-3" style="height: calc(100vh - 3rem); overflow: auto;">
@@ -22,7 +26,9 @@ style="width: 200px">
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">
+            <a class="nav-link text-light" [routerLink]="['/users',{
+              outlets:{ skin:'home'}
+            }]">
               <svg style="margin:10px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-1x2" viewBox="0 0 16 16"> <path d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9v5h-5v-5h5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/> </svg>
               Home</a>
           </li>
@@ -34,7 +40,9 @@ style="width: 200px">
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">
+            <a class="nav-link text-light" [routerLink]="['/users',{
+              outlets:{ skin:['settings'] }
+            }]">
               <i class="fa-solid fa-gear" style="margin:10px"></i>
               Settings</a>
           </li>
@@ -60,6 +68,10 @@ style="width: 200px">
   </div>
 </div>
 
+<!--TOPBAR-->
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top"
+style="max-height: 80px; z-index: 2;
+  background: linear-gradient(to right, #a641e1, #9682ee);">
 
   <div class="justify-content-start"
   style="color: #fff; margin-left: 240px;">
@@ -71,12 +83,12 @@ style="width: 200px">
         type="search"
         placeholder="<Friend's username>" aria-label="Search">
         <button class="btn my-2 my-sm-0" type="submit">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-magnifying-glass" style="color:#fff"></i>
         </button>
       </form>
     <div class="nav-item">
       <a class="nav-link" href="#">
-        <i class="fa-brands fa-github fa-2xl" style="color: #000000;"></i>
+        <i class="fa-brands fa-github fa-2xl" style="color: #fff;"></i>
       </a>
     </div>
     <div class="nav-item">
@@ -87,5 +99,3 @@ style="width: 200px">
         </div>
   </div>
 </nav>
-
-<div style="position:absolute; left:300px;top:300px;"></div>

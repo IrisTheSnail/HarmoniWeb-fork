@@ -1,0 +1,28 @@
+<div class="row" style="margin-top:90px">
+  <div class="col border w-50">
+    <!--PLAYLIST-->
+    <div *ngFor="let item of playlist">
+      <div class="row">
+        <div class="col border p-2" style="overflow: hidden; text-overflow: ellipsis;">
+          {{item.id}}&nbsp;-&nbsp;{{item.name}}</div>
+        <div class="col border p-2" style="max-width: fit-content;">{{item.length}}</div>
+        <!--TO DO LIST : THOSE MUST BE CLICKABLE AND START THE MUSIC AND CHAGE THE
+          PLAY AND NOTIFY THE OTHERS-->
+      </div>
+    </div>
+  </div>
+
+  <div class="col border w-50 position-relative">
+    <div class="row border position-absolute top-0">
+    <!--messaging-->
+daba sbar n9addo l player
+    </div>
+    <div class="row border position-absolute bottom-0">
+      <!--play-->
+      <div class="col border w-25">
+
+      </div>
+      <div class="col border w-75">ccc</div>
+    </div>
+  </div>
+</div>

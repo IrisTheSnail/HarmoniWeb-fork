@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -34,5 +34,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
