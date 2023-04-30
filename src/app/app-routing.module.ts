@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { SettingsComponent } from './dashboard/settings/settings.component';
 import { PlaylistComponent } from './dashboard/playlist/playlist.component'
 import { HomeComponent } from './dashboard/home/home.component'
+import { PlayerComponent } from './dashboard/player/player.component';
 
 
 
@@ -18,9 +19,9 @@ const routes: Routes = [
   { path: 'users', component: DashboardComponent,
     children:[
       {path:'settings', component:SettingsComponent, outlet:'skin'},
-      {path: 'home', component:HomeComponent, outlet:'skin'},
-      ]}
-
+      {path: 'home', component:HomeComponent, outlet:'skin'}
+    ]
+  }
 ];
 
 @NgModule({

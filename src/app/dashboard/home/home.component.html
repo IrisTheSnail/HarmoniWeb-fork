@@ -1,28 +1,47 @@
-<div class="row" style="margin-top:90px">
-  <div class="col border w-50">
-    <!--PLAYLIST-->
-    <div *ngFor="let item of playlist">
-      <div class="row">
-        <div class="col border p-2" style="overflow: hidden; text-overflow: ellipsis;">
-          {{item.id}}&nbsp;-&nbsp;{{item.name}}</div>
-        <div class="col border p-2" style="max-width: fit-content;">{{item.length}}</div>
-        <!--TO DO LIST : THOSE MUST BE CLICKABLE AND START THE MUSIC AND CHAGE THE
-          PLAY AND NOTIFY THE OTHERS-->
+<div class="container border-2 position-absolute top-0 bottom-0">
+  <div class="row position-fixed top-0 bottom-0 end-0 start-0" style="margin-top:90px; margin-left: 200px;">
+    <div class="col border w-50">
+      <!--PLAYLIST-->
+      <div *ngFor="let item of playlist">
+        <div class="row">
+
+          <a class="col border-bottom p-2" style="overflow: hidden;
+          text-overflow: ellipsis; text-decoration: none; color: black;"
+          (click)="changeSong(item)"
+          >
+            &nbsp;&nbsp;&nbsp;{{item.title}}<br><div style="color:gray;font-size: 12px;">mp3::40Hz</div></a>
+
+          <div class="col border-bottom p-2" style="max-width: fit-content;">{{item.length}}</div>
+          <!--TO DO LIST : THOSE MUST BE CLICKABLE AND START THE MUSIC AND CHAGE THE
+            PLAY AND NOTIFY THE OTHERS | DONE-->
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="col border w-50 position-relative">
-    <div class="row border position-absolute top-0">
-    <!--messaging-->
-daba sbar n9addo l player
-    </div>
-    <div class="row border position-absolute bottom-0">
-      <!--play-->
-      <div class="col border w-25">
+    <div class="col border w-50 position-relative"
+    style="background: linear-gradient(0deg, rgb(168, 220, 255) 20%, rgb(229, 173, 231) 80%, rgb(192, 116, 255) 100%);">
 
+      <!--messaging-->
+      <div class="d-flex flex-column h-100 no-gutter m-0 p-0">
+
+        <footer class="footer mt-auto py-1 bg-transparent">
+          <button class="m-2 position-fixed bg-light"
+        style="border-radius: 50%; width:50px; height: 50px;bottom: 110px; right: 2%;
+        border-color: blueviolet; font-size:xx-large" title="invite a friend">+</button>
+          <div class="container no-gutter p-0 m-0" style="height: 93px">coo
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quisquam ex eaque mollitia modi minima, quod quaerat fuga excepturi repudiandae pariatur, maxime corrupti explicabo earum, voluptate numquam repellendus. Delectus, nisi!
+        </div>
+        </footer>
       </div>
-      <div class="col border w-75">ccc</div>
+    </div>
+
+
+    <div class="row border m-0 p-0 position-absolute bottom-0 start-0 end-0 no-gutter"
+    style="margin: 0; background-color: rgb(55, 0, 150);">
+      <!--player-->
+
+      <app-player [selectedAudio]="current" (selectedAudioChange)="current=$event"></app-player>
+
     </div>
   </div>
 </div>

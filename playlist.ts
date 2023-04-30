@@ -1,21 +1,29 @@
-export interface Playlist {
-  id : number,
-  name : string,
-  artist : string,
+export interface Song {
+  url : string,
+  title : string,
+  cover : string,
   length: string
 }
 
-export var playlist : Playlist[] = [
+
+export var playlist : Song[] = [
   {
-    id : 1,
-    name : 'tanya',
-    artist : 'coo coo',
-    length: '3:50'
+    url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    title: "ブルーバード：Blue Bird（ Minichestra - Karuizawa Ohga Hall Recording ）",
+    cover: "https://i1.sndcdn.com/artworks-000249294066-uow7s0-t500x500.jpg",
+    length: "4:05",
+
   },
   {
-    id : 2,
-    name : 'prnakdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
-    artist : 'fulful',
-    length : '23.00'
+    url: "https://www.youtube.com/watch?v=4t__wczfpRI",
+    title: "Sample 2",
+    cover: "https://i1.sndcdn.com/artworks-000249294066-uow7s0-t500x500.jpg",
+    length: "5:00"
+  },
+  {
+    url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3",
+    title: "Sample 3",
+    cover: "https://i1.sndcdn.com/artworks-000249294066-uow7s0-t500x500.jpg",
+    length: "2:45"
   }
-]
+];
