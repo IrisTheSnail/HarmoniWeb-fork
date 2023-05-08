@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { AuthService } from '../controller/services/auth.service.ts.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -12,12 +14,13 @@ export class SigninComponent implements OnInit{
   amhere: boolean = true;
   isUnchanged:boolean = true;
 
-  constructor( private fb: FormBuilder){}
+  constructor( private fb: FormBuilder,public authService: AuthService,
+    public router: Router){}
 
   ngOnInit() {
     this.Sign = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      username: [''],
+      password: ['']
       // email: '',
       // password: ''
     })
@@ -27,8 +30,6 @@ export class SigninComponent implements OnInit{
   }
 
   submitHandler(Sign: any){
-    //this.loading = true;
-    console.log("button owkrs");
     const formValue = this.Sign.value;
     console.log(formValue);
 
@@ -36,6 +37,7 @@ export class SigninComponent implements OnInit{
       //just to learn :
       //await this.afs.collection('contacts').add(formValue);
       //ila tra chi blan f l backend
+      this.authService.signIn(this.Sign.value);
     }catch(err){
 
     }

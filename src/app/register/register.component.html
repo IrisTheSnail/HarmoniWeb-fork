@@ -6,15 +6,15 @@
   <div class="row m-3" style="font-size:xx-large;">Create a new account!</div>
 <form #register="ngForm" (ngSubmit)="registerFunc(register)" ngForm>
     <div class="form-group">
-      <label for="username"></label><br>
-      <input type="text" name="username" class="form-control" placeholder="" ngModel>
-      <small class="text-muted">Username</small>
-    </div>
-    <pre></pre>
-    <div class="form-group">
       <label for="email"></label><br>
       <input type="text" name="email" class="form-control" placeholder="" ngModel>
       <small class="text-muted">email</small>
+    </div>
+    <pre></pre>
+    <div class="form-group">
+      <label for="username"></label><br>
+      <input type="text" name="username" class="form-control" placeholder="" ngModel>
+      <small class="text-muted">Username</small>
     </div>
     <pre></pre>
     <div class="form-group">
@@ -30,8 +30,8 @@
     </div>
     <div *ngIf="register.value.password !== register.value.reenter" class="text-danger" >typo in password</div>
     <pre></pre>
-    <a [routerLink]="['','users']" routerLinkActive="active" type="submit" class="btn btn-primary rounded-pill" style="background-color: rgb(76, 0, 163);border-color: rgb(218, 26, 218);">
+    <button type="submit" class="btn btn-primary rounded-pill" style="background-color: rgb(76, 0, 163);border-color: rgb(218, 26, 218);">
       Submit
-    </a>
+    </button>
   </form>
 </div>

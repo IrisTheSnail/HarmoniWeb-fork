@@ -17,8 +17,7 @@ export class HomeComponent {
   playlist = playlist;
   current : Song | undefined = playlist[0];
 
-  @ViewChild('coo', { static: false }) coo: ElementRef;
-
+  
 
   constructor(private route: ActivatedRoute) { }
 
