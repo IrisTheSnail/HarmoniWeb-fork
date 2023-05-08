@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User, users } from 'users';
+//import { User, users } from 'users';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { User, users } from 'users';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  user: User | undefined;
+  //user: User | undefined;
 
   constructor(private route: ActivatedRoute) { }
 
