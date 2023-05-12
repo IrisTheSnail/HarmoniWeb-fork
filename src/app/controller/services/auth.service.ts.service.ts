@@ -18,7 +18,7 @@ import axios from 'axios';
 export class AuthService {
   endpoint: string = 'http://localhost:9000/';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser = {};
+  public current:String;
   constructor(private http: HttpClient, public router: Router) {}
   // Sign-up
   signUp(user: User) {
@@ -29,12 +29,9 @@ export class AuthService {
       }
     };
     const data = JSON.stringify(user);
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAAAAAAAAAaaaaaAAAAAAAAA\n");
-    console.log(data);
     axios.post(this.endpoint + 'signup', data, config)
     .then((response) => {
       const token = response.data;
-      console.log(this.getToken());
       localStorage.setItem('access_token', token);
     })
     .catch((error) => {
@@ -66,9 +63,10 @@ export class AuthService {
     axios.post(this.endpoint + 'authenticate', data, config)
     .then((response) => {
       const token = response.data;
-      console.log(this.getToken());
+      const currentUser = JSON.stringify(user.username);
+      this.current = currentUser.slice(1, -1);
       localStorage.setItem('access_token', token);
-      this.router.navigate(['/users']);
+      this.router.navigate(['/user', this.current]);
     })
     .catch((error) => {
       console.error(error);

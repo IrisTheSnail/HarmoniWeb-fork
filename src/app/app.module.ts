@@ -32,7 +32,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    DashboardModule,
     HttpClientModule
   ],
   providers: [

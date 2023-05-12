@@ -7,14 +7,16 @@
 <div class="position-fixed top-0 start-0 bottom-0 bg-dark col-sm-1"
 style="width:200px; z-index: 3; margin-right: 30px;">
   <div class="py-3">
-    <a class="d-flex align-items-center px-3 mb-3" href="#">
-        <img src="https://mdbootstrap.com/img/logo/mdb-transparent.png"
-        alt="Your Logo" width="90%" class="me-2">
-    </a>
+    <div class="d-flex align-items-center px-3 mb-3" >
+      <div alt="logo" class="w-75" style="font-family: Sigmar;font-size: xx-large;text-decoration: none;
+      color: white">
+        HARMONI
+      </div>
+    </div>
 
     <div class="py-3" style="height: calc(100vh - 3rem); overflow: auto;">
       <!-- Your content here -->
-      <!--this shit is here bc if you put it between the buttons it creates an unwanted
+      <!--this thing is here bc if you put it between the buttons it creates an unwanted
     space between them-->
     <div *ngIf="true" class="notification"></div>
       <ul class="nav flex-column" >
@@ -24,7 +26,7 @@ style="width:200px; z-index: 3; margin-right: 30px;">
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-light" [routerLink]="['/users',{
+            <a class="nav-link text-light" [routerLink]="['/user/'+currentusername,{
               outlets:{ skin:'home'}
             }]">
               <svg style="margin:10px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-1x2" viewBox="0 0 16 16"> <path d="M6 1H1v14h5V1zm9 0h-5v5h5V1zm0 9v5h-5v-5h5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1h-5z"/> </svg>
@@ -38,14 +40,14 @@ style="width:200px; z-index: 3; margin-right: 30px;">
           </li>
 
           <li class="nav-item">
-            <a class="nav-link text-light" [routerLink]="['/users',{
-              outlets:{ skin:['settings'] }
-            }]">
+            <a class="nav-link text-light" [routerLink]="['/user/'+currentusername,{
+              outlets:{ skin:'settings'}
+            }]"  >
               <i class="fa-solid fa-gear" style="margin:10px"></i>
               Settings</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">
+            <a class="nav-link text-light" href="#" (click)="authService.doLogout()">
               <i class="fas fa-door-open" style="margin:10px"></i>
               Logout</a>
           </li>
@@ -54,11 +56,45 @@ style="width:200px; z-index: 3; margin-right: 30px;">
             <div class="nav-link text-light hr-lines2" style="margin-left: 10px;" href="#">
             Playlists</div>
         </li>
+        <div *ngFor="let item of this.playlists">
+          <li class="nav-item"></li>
+            <a class="nav-link text-light" href="#">
+              <i class="fas fa-music" style="margin:10px"></i>
+              {{item}}
+            </a>
+        </div>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">
-            <i class="fas fa-music" style="margin:10px"></i>
-            Mock list
-          </a>
+          <button class="border rounded-pill" style="margin-left:30px" type="button"
+      (click)="openPopup()"> add list </button>
+      <!--MODAL to add song-->
+      <div
+        class="modal"
+        tabindex="-1"
+        role="dialog"
+        [ngStyle]="{'display':displayStyle}" style="margin-top: 100px;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add new playlist</h4>
+            </div>
+            <form #add="ngForm" (submit)="closePopup(add)" ngForm>
+            <div class="modal-body">
+
+              <input class="form-control mr-sm-2 bg bg-white rounded-from-left-side"
+              placeholder="name your playlist" name="playlist" ngModel>
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger"
+                      >
+                add
+              </button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
         </li>
 
       </ul>
@@ -73,14 +109,14 @@ style="max-height: 80px; z-index: 2;
 
   <div class="justify-content-start"
   style="color: #fff; margin-left: 240px;">
-  Welcome</div>
+  Welcome, {{this.currentusername}}</div>
   <div class="collapse navbar-collapse justify-content-end">
       <form class="form-inline my-2 my-lg-0 d-flex flex-row border rounded-pill"
       style="margin-right: 5%;">
         <input class="form-control mr-sm-2 bg bg-white border-0 rounded-from-left-side"
         type="search"
-        placeholder="<Friend's username>" aria-label="Search">
-        <button class="btn my-2 my-sm-0" type="submit">
+        placeholder="search for a song" aria-label="Search">
+        <button class="btn my-2 my-sm-0" type="submit" (click)="search()">
           <i class="fa-solid fa-magnifying-glass" style="color:#fff"></i>
         </button>
       </form>
@@ -89,11 +125,11 @@ style="max-height: 80px; z-index: 2;
         <i class="fa-brands fa-github fa-2xl" style="color: #fff;"></i>
       </a>
     </div>
-    <div class="nav-item">
+    <!-- <div class="nav-item">
           <a class="nav-link" href="#">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
-            class="rounded-circle" alt="Profile Pic" height="40">
+            <img id="tableBanner" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"
+            class="rounded-circle" alt="Profile Pic" height="40" width="40">
           </a>
-        </div>
+        </div> -->
   </div>
 </nav>

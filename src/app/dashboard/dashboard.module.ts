@@ -14,6 +14,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { ImageInsertComponent } from './image-insert/image-insert.component';
+import { FormsModule } from '@angular/forms';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 const modules = [
   MatButtonModule,
@@ -31,9 +34,12 @@ const modules = [
     SettingsComponent,
     HomeComponent,
     PlayerComponent,
-    TimeConversionPipe
+    TimeConversionPipe,
+    ImageInsertComponent,
+    PlaylistComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     RouterModule,
     modules,

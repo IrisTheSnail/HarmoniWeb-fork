@@ -1,1 +1,50 @@
-<p>playlist works!</p>
+<div class="col border-0 w-100">
+  <!--PLAYLIST-->
+  <div *ngFor="let item of playlistCurrent">
+    <div class="row" [ngStyle]="{'background-color': (item==current) ? '#73c7af' : '#ffffff'}"
+    >
+
+      <a class="col border-bottom p-2" style="overflow: hidden;
+      text-overflow: ellipsis; text-decoration: none; color: black;"
+      (click)="changeSong(item)"
+      >
+        &nbsp;&nbsp;&nbsp;{{item.title}}<br><div style="color:gray;font-size: 12px;">mp3::40Hz</div></a>
+
+      <div class="col border-bottom p-2" style="max-width: fit-content;">{{item.length}}</div>
+      <!--TO DO LIST : THOSE MUST BE CLICKABLE AND START THE MUSIC AND CHAGE THE
+        PLAY AND NOTIFY THE OTHERS | DONE-->
+    </div>
+  </div>
+  <button class="border  rounded-pill" style="margin:30px" type="button"
+  (click)="openPopup()"> add song </button>
+  <!--MODAL to add song-->
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display':displayStyle}" style="margin-top: 100px;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add new song</h4>
+        </div>
+        <form #add="ngForm" (submit)="closePopup(add)" ngForm>
+        <div class="modal-body">
+
+          <input class="form-control mr-sm-2 bg bg-white rounded-from-left-side"
+          placeholder="add name of the song" name="title" ngModel>
+
+          <input class="form-control mr-sm-2 bg bg-white rounded-from-left-side"
+          placeholder="add link to the song on youtube" name="url" ngModel>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger"
+                  >
+            add
+          </button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

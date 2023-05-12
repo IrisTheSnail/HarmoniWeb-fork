@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from 'src/app/controller/services/user';
 
 @Component({
   selector: 'app-settings',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent {
+  currentItem!: string;
 
 }
