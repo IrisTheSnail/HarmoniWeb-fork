@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/controller/services/user';
+import { User } from '../../controller/models/user';
 
 @Component({
   selector: 'app-settings',

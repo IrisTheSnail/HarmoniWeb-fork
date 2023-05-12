@@ -12,6 +12,7 @@ style="width:200px; z-index: 3; margin-right: 30px;">
       color: white">
         HARMONI
       </div>
+      <!-- <img src="assets/images/logo.png" [alt]="'logo'" width="170px"> -->
     </div>
 
     <div class="py-3" style="height: calc(100vh - 3rem); overflow: auto;">
@@ -44,7 +45,7 @@ style="width:200px; z-index: 3; margin-right: 30px;">
               outlets:{ skin:'settings'}
             }]"  >
               <i class="fa-solid fa-gear" style="margin:10px"></i>
-              Settings</a>
+              Profile settings</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-light" href="#" (click)="authService.doLogout()">
@@ -104,19 +105,20 @@ style="width:200px; z-index: 3; margin-right: 30px;">
 
 <!--TOPBAR-->
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top"
-style="max-height: 80px; z-index: 2;
+style="height: 72px; z-index: 2;
   background: linear-gradient(to right, #a641e1, #9682ee);">
 
   <div class="justify-content-start"
   style="color: #fff; margin-left: 240px;">
   Welcome, {{this.currentusername}}</div>
   <div class="collapse navbar-collapse justify-content-end">
-      <form class="form-inline my-2 my-lg-0 d-flex flex-row border rounded-pill"
+      <form [formGroup]="searched" (ngSubmit)="search(searched)" class="form-inline my-2 my-lg-0 d-flex flex-row border rounded-pill"
       style="margin-right: 5%;">
         <input class="form-control mr-sm-2 bg bg-white border-0 rounded-from-left-side"
-        type="search"
-        placeholder="search for a song" aria-label="Search">
-        <button class="btn my-2 my-sm-0" type="submit" (click)="search()">
+        type="search" list="dataListOptions"
+        placeholder="search for a song" aria-label="Search" formControlName="searcheed">
+
+        <button class="btn my-2 my-sm-0" type="submit">
           <i class="fa-solid fa-magnifying-glass" style="color:#fff"></i>
         </button>
       </form>
@@ -125,11 +127,22 @@ style="max-height: 80px; z-index: 2;
         <i class="fa-brands fa-github fa-2xl" style="color: #fff;"></i>
       </a>
     </div>
-    <!-- <div class="nav-item">
-          <a class="nav-link" href="#">
-            <img id="tableBanner" [src]="url ? url : 'https://www.w3schools.com/howto/img_avatar.png'"
-            class="rounded-circle" alt="Profile Pic" height="40" width="40">
-          </a>
-        </div> -->
-  </div>
+    </div>
+
 </nav>
+
+<!--search content-->
+<div *ngIf="this.responseTracks">
+  <div class="position-absolute" style="top: 47px; right : 113px;
+   z-index:100; width: 380px; background-color: white;
+   border-radius-bottom-left: 10px;">
+
+    <div *ngFor="let item of this.musicService.getResponseBack().data">
+      <div class="d-flex flex-row justify-content-between m-2">
+
+       <div >{{item.name}}</div>
+       <button class="border rounded-pill" type="button" (click)="addSongtoList(item.name, item.uri, item.artist)">add</button>
+      </div>
+    </div>
+
+</div>

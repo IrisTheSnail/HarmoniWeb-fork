@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { ImageInsertComponent } from './image-insert/image-insert.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlaylistComponent } from './playlist/playlist.component';
 
 const modules = [
@@ -43,6 +43,7 @@ const modules = [
     CommonModule,
     RouterModule,
     modules,
+    ReactiveFormsModule
   ],
   exports: [
     modules,

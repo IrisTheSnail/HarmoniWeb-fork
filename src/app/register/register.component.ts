@@ -4,7 +4,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { GenericValidator } from '../../shared/generic-validator';
 import { PasswordMatcher } from '../../shared/password-matcher';
-import { User } from '../controller/services/user';
+import { User } from '../controller/models/user';
 import { AuthService } from '../controller/services/auth.service.ts.service';
 import { Router } from '@angular/router';
 

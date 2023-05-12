@@ -10,7 +10,7 @@ import { HomeComponent } from './dashboard/home/home.component'
 import { PlayerComponent } from './dashboard/player/player.component';
 
 import { AuthGuard } from './controller/guards/auth.guard.ts.guard';
-import { User } from './controller/services/user';
+import { User } from './controller/models/user';
 import { AuthService } from './controller/services/auth.service.ts.service';
 
 const routes: Routes = [

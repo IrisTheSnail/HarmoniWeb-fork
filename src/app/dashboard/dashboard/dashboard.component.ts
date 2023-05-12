@@ -4,7 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/controller/services/auth.service.ts.service';
 import { MusicService } from 'src/app/controller/services/music.service'
 import { ImageInsertComponent } from '../image-insert/image-insert.component';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { AxiosResponse } from 'axios';
+import { Track } from 'src/app/controller/models/track';
+
+import { Song, playlist } from 'playlist';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,15 +20,20 @@ export class DashboardComponent {
   @Input() currentusername = this.authService.current;
   public image:string|null;
 
-  playlist:NgForm;
-
+  searched:FormGroup;
   playlists :String[]= ["Mocklist"];
+  responseTracks:AxiosResponse<any, any> ;
+  flag: number = 0;
 
   constructor(private route: ActivatedRoute, public authService: AuthService,
     public musicService : MusicService) {
       const usar = this.currentusername;
       this.image = localStorage.getItem("imgData");
       console.log(this.image);
+
+      this.searched = new FormGroup({
+        searcheed: new FormControl()
+      });
     }
 
   ngOnInit() {
@@ -36,9 +45,12 @@ export class DashboardComponent {
     // this.user = users.find(user => user.username === productIdFromRoute);
   }
 
-  search(){
+  async search(searched:any){
+    this.flag = 1;
+    await this.musicService.searchSong(searched.value.searcheed);
+    console.log(this.musicService.getResponseBack());
+    this.responseTracks = this.musicService.getResponseBack().data;
 
-    this.musicService.searchSong("love");
   }
 
   displayStyle = "none";
@@ -62,4 +74,14 @@ export class DashboardComponent {
     this.displayStyle = "none";
 
   }
+
+  addSongtoList(name:any, uri:any, artist:any){
+    var newSong:Track={
+      name: name,
+      uri: uri,
+      artist: artist
+    }
+    return newSong;
+  }
+
 }

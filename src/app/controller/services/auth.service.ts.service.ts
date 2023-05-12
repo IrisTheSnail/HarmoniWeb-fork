@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { User } from '../models/user';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
@@ -18,7 +18,7 @@ import axios from 'axios';
 export class AuthService {
   endpoint: string = 'http://localhost:9000/';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  public current:String;
+  public current:String | undefined;
   constructor(private http: HttpClient, public router: Router) {}
   // Sign-up
   signUp(user: User) {
